@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body ng-app="myng" ng-controller="mytest">
+<table border="1px" width="60%" align="center">
+    <tr>
+        <th>序号</th>
+        <th>商品编号</th>
+        <th>商品名称</th>
+        <th>品种</th>
+        <th>商品价格</th>
+    </tr>
+    <tr ng-repeat="product in products">
+        <td>{{$index+1}}</td>
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.tet}}</td>
+        <td>{{product.price}}</td>
+    </tr>
+</table>
+</body>
+<script>
+    var myng = angular.module("myng", []);
+    myng.controller("mytest", ["$scope", function ($scope) {
+        $scope.products = [{
+            id: 1001,
+            name: '胡南',
+            tet: '人兽杂交',
+            price: 250
+        }, {
+            id: 1002,
+            name: '狗子',
+            tet: '纯种',
+            price: 249.9
+        }]
+    }]);
+</script>
+</html>

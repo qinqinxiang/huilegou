@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的速运-注册</title>
+    <link rel="stylesheet" type="text/css" href="css/styleloginsign.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/self/effect.js"></script>
+    <script src="js/angular.min.js"></script>
+    <!--[if IE]>
+<script  type="text/javascript" src="js/html5.js"></script>
+<script  type="text/javascript" src="js/respond.min.js"></script>
+<![endif]-->
+    <script>
+
+    </script>
+</head>
+<body>
+<!--head-->
+<div class="loginnav">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="images/icon/logo.png"></a>
+                <span class="logintitle">用户注册</span>
+            </div>
+
+        </div>
+
+    </nav>
+</div>
+<div class="container">
+    <!--mainsignup-->
+    <section class="mainsign">
+        <div class="headnav">
+
+        </div>
+
+        <div class="signup" ng-app="sinupapp" ng-controller="sinupsoup">
+            <div class="col-md-9 signupbox">
+                <form class="form col-md-6" id="registFrom" action="registFrom.action" method="post">
+                    <div class=" form-group">
+                        <label for="inputaccount" class="col-sm-3 control-label"><b>*</b>手机号</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="telephone" id="inputaccount"
+                                   ng-model='telephone' placeholder="请输入手机号">
+                            <span id="spans"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputaccount" class="col-sm-3 control-label"><b>*</b>验证码</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="inputaccount" name="code" placeholder="请输入验证码">
+                        </div>
+                        <div class="col-sm-3 song">
+                            <a class="btn btn-default" ng-click="getCode(telephone)" ng-bind="butMsg"></a>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputaccount" class="col-sm-3 control-label"><b>*</b>密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="6-16位数字或英文字母">
+                            <span id="psw"></span>
+                            <p class="text-right grey">安全强度：*****</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputaccount" class="col-sm-3 control-label"><b>*</b>确认密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" name="repassword" id="repassword"
+                                   placeholder="6-16位数字或英文字母">
+                            <span id="repsw"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputaccount" class="col-sm-3 control-label"><b>*</b>绑定邮箱</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="请输入需要绑定的邮箱">
+                            <span id="reemail"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8 song">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 查看并同意<a href="#"> 《速运快递服务协议》</a>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group signbtn">
+                        <div class="col-sm-offset-3 col-sm-8 song">
+                            <!--href="signup-success.html"-->
+                            <a class="btn btn-danger" href="javascript:$('#registFrom').submit();">注册</a>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+            <div class="col-md-3 introbox">
+                <div class="signintro">
+                    <h5 class="redtext">注册成为速运会员，您可以享受更多的服务！</h5>
+                    <ul>
+                        <li class="list-group">积分奖励，电子运单专享特权</li>
+                        <li class="list-group">快速理赔，保价优惠</li>
+                        <li class="list-group">大陆偏远地区附加费减免</li>
+                        <li class="list-group">快件路由订阅，快件信息管理，批量下单</li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!--foot-->
+<footer>
+    <section class="copyright size12">
+        <div class="container">
+            <p class="text-center">地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100 </p>
+            <p class="text-center">京ICP备08001421号京公网安备110108007702</p>
+        </div>
+    </section>
+</footer>
+</body>
+
+<script type="text/javascript">
+    //初始化模块
+    var sinupapp = angular.module("sinupapp", []);
+
+    sinupapp.controller("sinupsoup", ["$scope", "$http", function ($scope, $http) {
+        //定义butMsg为了改变信息提示
+        $scope.butMsg = "发送验证码";
+        //定义标识符
+        var active = true;
+        //60秒后允许发送第二次短信
+        var sendTime = 2;
+        var sendInterval;
+        //为点击发送验证码定义一个click事件
+        $scope.getCode = function (telephone) {
+            if (active == false) {
+                //如果标识符信息为false点击发送验证码不会触发下面的函数
+                return;
+            }
+            //编写校验手机号码正则表达式
+            var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+            //判断号码是否可用
+            if (myreg.test(telephone)) {
+                //alert("正确")
+                //手机号码输入正确发送验证码
+                $http({
+                    method: 'GET',
+                    url: 'sendMessage.action',
+                    params: {
+                        telephone: telephone
+                    }
+                }).error(function (data, status, headers, config) {
+                    alert("验证码发送失败！请联系管理员");
+                });
+
+            } else {
+                //alert("错误")
+                $("#spans").html("<font color='red' size='2'>号码输入有误</font>")
+                return;
+            }
+            //定点击发送验证码按钮时改变标识符为false
+            active = false;
+            //调用js事件用于记时,每秒计时器跳动一次
+            sendInterval = setInterval(function () {
+                if (sendTime < 0) {
+                    //如果倒计时小于零
+                    $scope.butMsg = "重发验证码";
+                    //强制跟新视图
+                    $scope.$digest();
+                    //标识符改变为true
+                    active = true;
+                    //重新赋值时间
+                    sendTime = 2;
+                    //关闭计时器
+                    clearInterval(sendInterval)
+                } else {
+                    //如果倒计时不为零
+                    $scope.butMsg = sendTime + "秒后发送验证码";
+                    //倒计时减减
+                    sendTime--;
+                    //自动更新视图
+                    $scope.$digest();
+                }
+            }, 1000)
+        }
+    }]);
+
+    //密码 邮箱校验
+    /* $(function () {
+         $("form input").blur(function () {
+             //alert("111");
+             //判断当前是选中的的输入框
+             if($(this).is("#password")){
+                 //获取单前文本框的值
+                 var password = $("#password").val();
+                 if (password==""){
+                     $("#psw").html("<font color='red' size='2'>密码输入有误</font>");
+                 }else {
+                     $("#psw").html(" ");
+                 }
+             }
+
+             if ($(this).is("#repassword")){
+                 //获取单前文本框的值
+                 var password = $("#password").val();
+                 if (this.value==""){
+                     $("#repsw").html("<font color='red' size='2'>密码有误</font>")
+                 }if(this.value!=password){
+                     $("#repsw").html("<font color='red' size='2'>两次密码不一致</font>")
+                 }else {
+                     $("#repsw").html(" ");
+                 }
+             }
+
+             if($(this).is("#email")){
+                 //邮箱校验正则
+             var reemails=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+                 if (this.value==""){
+                     $("#reeamil").html("<font color='red' size='2'>邮箱输入确</font>");
+                     alert("aaa");
+                 }if ((reemails).test(this.value)){
+                     $("#reeamil").html("<font color='red' size='2'>邮箱输入不正确</font>");
+                 } else {
+                     $("#reemail").html(" ");
+                 }
+             }
+         })
+     })*/
+</script>
+</html>

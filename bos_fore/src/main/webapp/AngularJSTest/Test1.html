@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body>
+<!--定义模块 ng-app-->
+<div ng-app="myng" ng-controller="mytest">
+    <div>
+        <input type="text" name="test" ng-model="test"/>
+        <input type="button" value="清空" ng-click="clickValue()"/>
+    </div>
+    <div>
+        胡南:{{test}}
+    </div>
+</div>
+
+<script>
+    //初始化模块
+    var myns = angular.module("myng", []);
+    //依赖注入
+    myns.controller("mytest", ["$scope", function ($scope) {
+        $scope.test = "真是个大傻吊";
+
+        $scope.clickValue = function () {
+            $scope.test = "";
+        }
+    }]);
+</script>
+</body>
+</html>

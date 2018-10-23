@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+    <!-- 导入jquery核心类库 -->
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <!-- 导入easyui类库 -->
+    <link id="easyuiTheme" rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/default.css">
+    <script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+    <!--引入ztree-->
+    <script type="text/javascript" src="../js/ztree/jquery.ztree.all-3.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="../js/ztree/zTreeStyle.css">
+    <script>
+        var setting = {
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes = [
+            {id: 1, pId: 0, name: "基础数据", open: true},
+            {id: 11, pId: 1, name: "基础档案设置"},
+            {id: 12, pId: 1, name: "收派标准"},
+            {id: 13, pId: 1, name: "班车管理"},
+            {id: 2, pId: 0, name: "受理"},
+            {id: 21, pId: 2, name: "业务受理", open: true},
+            {id: 22, pId: 2, name: "运单快速录入"},
+            {id: 23, pId: 2, name: "运单录入"},
+            {id: 3, pId: 0, name: "受理"},
+            {id: 31, pId: 3, name: "业务受理", open: true},
+            {id: 32, pId: 3, name: "运单快速录入"},
+            {id: 33, pId: 3, name: "运单录入"},
+
+        ];
+        $(document).ready(function () {
+            $.fn.zTree.init($("#zets"), setting, zNodes);
+        });
+    </script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'north'" title="黑马商城" style="height: 100px;">北部地区</div>
+<div data-options="region:'west'" title="菜单导航" style="width: 120px;">
+    <div class="easyui-accordion" data-options="fit:true">
+
+        <div title="基本功能">
+            <ul id="zets" class="ztree"></ul>
+        </div>
+
+        <div title="系统管理">
+
+
+        </div>
+
+    </div>
+    <
+
+</div>
+<div data-options="region:'center'">
+    <div id="tt" class="easyui-tabs" data-options="fit:true">
+        <div data-options="title:'选项卡1',closable:true">tab1</div>
+    </div>
+
+</div>
+<div data-options="region:'east'" style="width: 80px;">东部地区</div>
+<div data-options="region:'south'" style="height: 100px;">南部地区</div>
+
+</body>
+</html>

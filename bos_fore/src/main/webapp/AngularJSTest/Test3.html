@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+</head>
+<body ng-app="mytest">
+<head>
+    <h1>HEAD</h1>
+    <a href="#/JavaEE">JavaEE</a>
+    <a href="#/IOS">IOS</a>
+    <a href="#/Android">Android</a>
+</head>
+<!--加载路由后更新内容-->
+<div ng-view>
+
+</div>
+<footer>
+    <h1>FOOTER</h1>
+</footer>
+</body>
+<script>
+    var mytest = angular.module("mytest", ["ngRoute"]);
+    mytest.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/JavaEE', {
+                templateUrl: 'test1.html'
+            }).when('/IOS', {
+            templateUrl: 'test2.html'
+        }).when('/Android', {
+            templateUrl: 'test1.html'
+        })
+    }]);
+</script>
+</html>
