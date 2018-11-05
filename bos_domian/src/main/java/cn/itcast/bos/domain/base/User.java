@@ -1,9 +1,9 @@
 package cn.itcast.bos.domain.base;
 
 public class User {
-    private Integer id;
-    private String name;
-    private String pwd;
+    private Integer id; //用户id
+    private String name; //用户名
+    private String pwd; //密码
 
     public Integer getId() {
         return id;
