@@ -31,7 +31,7 @@ public class Archive {
     @Column(name = "C_OPERATING_COMPANY")
     private String operatingCompany; // 操作单位
 
-    @OneToMany(mappedBy = "archive")
+    @OneToMany(mappedBy = "archive") //你好
     private Set<SubArchive> subArchives = new HashSet<>(); // 子档案
 
     public Integer getId() {
