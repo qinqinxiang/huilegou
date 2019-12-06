@@ -1,0 +1,27 @@
+server:
+  port: 9000
+
+management:
+  endpoint:
+    beans:
+      cache:
+        time-to-live: 10s
+
+info:
+  app:
+    name: consumer-1
+    encoding: UTF-8
+  java:
+    souce: 1.8.0_171
+    target: 1.8.0_171
+
+
+spring:
+  application:
+    name: consumer-1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9110/eureka/
+  instance:
+    prefer-ip-address: true
